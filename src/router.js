@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
-import catalog from "./components/catalog";
-import mLoading from "./components/m-loading";
+import catalog from "./page/catalog";
+import testMLoading from "./page/test-mLoading";
+import testPagination from "./page/test-pagination";
 
 Vue.use(Router);
 
@@ -13,9 +14,14 @@ export default new Router({
       component: catalog
     },
     {
-      path: "/mloading",
-      name: "mLoading",
-      component: mLoading
+      path: "/test-mLoading",
+      name: "testMLoading",
+      component: testMLoading
+    },
+    {
+      path: "/test-pagination",
+      name: "testPagination",
+      component: testPagination
     }
   ]
 });

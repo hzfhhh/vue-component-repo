@@ -1,8 +1,11 @@
 <template>
   <div class="catalog">
     <h3 class="title">组件目录</h3>
-    <router-link to="/mLoading">
+    <router-link to="/test-mLoading">
       <div class="catalog-tag">1.加载动画</div>
+    </router-link>
+    <router-link to="/test-pagination">
+      <div class="catalog-tag">2.分页</div>
     </router-link>
   </div>
 </template>

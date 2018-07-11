@@ -1,6 +1,6 @@
-# test-project
+# VUE 个人组件库
 
-> A Vue.js project
+> 日常工作中造的一些vue的组件轮子
 
 ## Build Setup
 

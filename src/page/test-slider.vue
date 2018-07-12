@@ -1,5 +1,8 @@
 <template>
   <div id="test-slider">
+    <router-link to="/">
+      <div class="back">返回</div>
+    </router-link>
     <div class="space">均分，滑动单位1</div>
     <slider class="slider1" :sliderOption="sliderOption1"></slider>
     <div class="space">不均分，滑动单位10，可滑动最大值为1000</div>
@@ -67,7 +70,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #test-slider {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

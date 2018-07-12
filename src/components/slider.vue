@@ -12,8 +12,19 @@
 </template>
 
 <script>
+// 具体参数使用案例
+// sliderOption: {
+//   slider: "slider", 滑动条id(必填)
+//   bar: "bar", 滑块id(必填)
+//   percent: [], 滑块分段百分比
+//   range: [], 滑块分段数值
+//   step: 1, 最小滑动距离
+//   initial: 200, 初始值
+//   slideMin: 0, 能滑动的最小值
+//   slideMax: 2000
+// }
 export default {
-  name: "h_slider",
+  name: "slider",
   data() {
     return {
       maskWidth: 0, //滑块滑动长度

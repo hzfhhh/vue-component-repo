@@ -1,5 +1,8 @@
 <template>
   <div class="test">
+    <router-link to="/">
+      <div class="back">返回</div>
+    </router-link>
     <h4>分页组件</h4>
     <pagination :size="size" :total="total" @changeSize="handleChangeSize"></pagination>
   </div>

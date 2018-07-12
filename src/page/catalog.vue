@@ -10,6 +10,9 @@
     <router-link to="/test-slider">
       <div class="catalog-tag">3.滑块</div>
     </router-link>
+    <router-link to="/test-swiper-out">
+      <div class="catalog-tag">4.swiper-out</div>
+    </router-link>
   </div>
 </template>
 

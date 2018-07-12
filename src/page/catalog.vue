@@ -7,6 +7,9 @@
     <router-link to="/test-pagination">
       <div class="catalog-tag">2.分页</div>
     </router-link>
+    <router-link to="/test-slider">
+      <div class="catalog-tag">3.滑块</div>
+    </router-link>
   </div>
 </template>
 

@@ -5,6 +5,7 @@ import testMLoading from "./page/test-mLoading";
 import testPagination from "./page/test-pagination";
 import testSlider from "./page/test-slider";
 import testSwiperOut from "./page/test-swiper-out";
+import testSwiper from "./page/test-swiper";
 
 Vue.use(Router);
 
@@ -34,6 +35,11 @@ export default new Router({
       path: "/test-swiper-out",
       name: "testSwiperOut",
       component: testSwiperOut
+    },
+    {
+      path: "/test-swiper",
+      name: "testSwiper",
+      component: testSwiper
     }
   ]
 });

@@ -11,7 +11,10 @@
       <div class="catalog-tag">3.滑块</div>
     </router-link>
     <router-link to="/test-swiper-out">
-      <div class="catalog-tag">4.swiper-out</div>
+      <div class="catalog-tag">4.滑动列表</div>
+    </router-link>
+    <router-link to="/test-swiper">
+      <div class="catalog-tag">5.轮播图</div>
     </router-link>
   </div>
 </template>

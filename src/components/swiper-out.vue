@@ -34,9 +34,6 @@ export default {
     }
   },
   mounted() {
-    var innerWidth = window.innerWidth;
-    document.getElementsByTagName("html")[0].style.fontSize =
-      innerWidth / 10 + "px";
     //点击其它区域隐藏
     let start = 0;
     let delBtn = document.querySelectorAll(".delete");

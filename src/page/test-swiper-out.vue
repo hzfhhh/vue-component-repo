@@ -1,6 +1,11 @@
 <template>
   <div class="test">
-    <h3>在移动端打开</h3>
+    <h4>
+      <router-link to="/">
+        <div class="back">返回</div>
+      </router-link>
+      在移动端打开
+    </h4>
     <swiper-out :list="list"></swiper-out>
   </div>
 </template>
@@ -45,10 +50,18 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    var innerWidth = window.innerWidth;
+    document.getElementsByTagName("html")[0].style.fontSize =
+      innerWidth / 10 + "px";
+    document.getElementsByTagName("body")[0].style.fontSize = "14px";
   }
 };
 </script>
 
 <style scoped>
-
+.back {
+  display: inline-block;
+}
 </style>

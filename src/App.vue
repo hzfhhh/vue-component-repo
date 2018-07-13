@@ -85,7 +85,6 @@ i {
   outline: 0;
   font-weight: normal;
   font-style: normal;
-  font-size: 100%;
   font-family: inherit;
   vertical-align: baseline;
 }
@@ -103,10 +102,6 @@ body {
   -webkit-overflow-scrolling: touch;
   height: 100%;
   overflow-x: hidden;
-}
-body {
-  line-height: 1;
-  font-size: 0.14rem;
 }
 :focus {
   outline: 0;

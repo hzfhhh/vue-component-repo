@@ -13,6 +13,10 @@ export default {
   data() {
     return {
       swiperOptoins: {
+        autoPlay: false,
+        textColor: "",
+        swiperWidth: 600,
+        swiperHeight: 300,
         swiperList: [
           {
             url:

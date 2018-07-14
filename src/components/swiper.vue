@@ -1,27 +1,12 @@
 <template>
   <!-- 轮播图 -->
-  <div class="swiper">
+  <div class="swiper" :style="{width: `${swiperWidth}px`, height: `${swiperHeight}px`}">
     <img src="https://uploads.codesandbox.io/uploads/user/82e0864e-4213-4d6c-a67d-cde3dedc92a2/q2mC-swiper-left.png" class="swiper-left" :class="{allow: swiperActiveIndex!==0}" @click="swiperLeft(1)" alt="">
-    <img src="https://uploads.codesandbox.io/uploads/user/82e0864e-4213-4d6c-a67d-cde3dedc92a2/M8Ub-swiper-right.png" class="swiper-right" @click="swiperRight(1)" :class="{allow: swiperActiveIndex!==2}" alt="">
+    <img src="https://uploads.codesandbox.io/uploads/user/82e0864e-4213-4d6c-a67d-cde3dedc92a2/M8Ub-swiper-right.png" class="swiper-right" @click="swiperRight(1)" :class="{allow: swiperActiveIndex!==swiperList.length-1}" alt="">
     <div class="swiper-content">
-      <!--div class="swiper-item" style="transform: translateX(0) scale(1)" ref="swiper-item-0">
-        <img class="swiper-item" src="https://uploads.codesandbox.io/uploads/user/82e0864e-4213-4d6c-a67d-cde3dedc92a2/o98p-swiper-img-1.jpg" alt="">
-        <div class="text">描述文案
-        </div>
-      </div>
-      <div class="swiper-item" style="transform: translateX(this.swiperWidthpx) scale(1)" ref="swiper-item-1">
-        <img class="swiper-item" src="https://uploads.codesandbox.io/uploads/user/82e0864e-4213-4d6c-a67d-cde3dedc92a2/FEsR-swiper-img-2.jpg" alt="">
-        <div class="text">描述文案
-        </div>
-      </div>
-      <div class="swiper-item" style="transform: translateX(1920px) scale(1)" ref="swiper-item-2">
-        <img class="swiper-item" src="https://uploads.codesandbox.io/uploads/user/82e0864e-4213-4d6c-a67d-cde3dedc92a2/dGn3-swiper-img-3.jpg" alt="">
-        <div class="text">描述文案
-        </div>
-      </div -->
-      <div class="swiper-item" v-for="(item, index) in swiperList" :key="index" :style="`transform: translateX(${swiperWidth*index}px) scale(1)`" :ref="`swiper-item-${index}`">
+      <div class="swiper-item" v-for="(item, index) in swiperList" :key="index" :style="{transform: `translateX(${swiperWidth*index}px) scale(1)`}" :ref="`swiper-item-${index}`">
         <img class="swiper-img" :src="item.url" alt="">
-        <div class="text">{{item.text}}</div>
+        <div class="text" :style="{color: textColor}">{{item.text}}</div>
       </div>
     </div>
   </div>
@@ -42,21 +27,35 @@ export default {
     return {
       swiperActiveIndex: 0,
       last_swiperActiveIndex: 0,
-      swiperWidth: 960
+      swiperWidth: 600,
+      swiperHeight: 300,
+      textColor: "#101010"
     };
   },
   mounted() {
-    this.swiperWidth = document.querySelector(".swiper-img").width;
+    this.swiperWidth = this.swiperOptoins.swiperWidth
+      ? this.swiperOptoins.swiperWidth
+      : this.swiperWidth;
+    this.swiperHeight = this.swiperOptoins.swiperHeight
+      ? this.swiperOptoins.swiperHeight
+      : this.swiperHeight;
+    this.textColor = this.swiperOptoins.textColor
+      ? this.swiperOptoins.textColor
+      : this.textColor;
+    if (this.swiperOptoins.autoPlay) {
+      this.autoSwiper();
+    }
   },
   methods: {
     swiperRight(isClick) {
-      if (this.swiperActiveIndex === 2) {
+      if (this.swiperActiveIndex === this.swiperList.length - 1) {
+        console.log("xxx");
         return;
       }
       if (isClick) {
         clearInterval(this.interval);
       }
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < this.swiperList.length; i++) {
         let itemIndex = "swiper-item-" + i;
         let initX = this.$refs[itemIndex][0].style.transform
           .replace(/(scale\(\d+\))/g, "")
@@ -79,8 +78,8 @@ export default {
       // }
       this.last_swiperActiveIndex = this.swiperActiveIndex;
       ++this.swiperActiveIndex;
-      if (isClick) {
-        // this.autoSwiper();
+      if (isClick && this.swiperOptoins.autoPlay) {
+        this.autoSwiper();
       }
     },
     swiperLeft(isClick) {
@@ -90,7 +89,7 @@ export default {
       if (isClick) {
         clearInterval(this.interval);
       }
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < this.swiperList.length; i++) {
         let itemIndex = "swiper-item-" + i;
         let initX = this.$refs[itemIndex][0].style.transform
           .replace(/(scale\(\d+\))/g, "")
@@ -113,17 +112,17 @@ export default {
       // }
       this.last_swiperActiveIndex = this.swiperActiveIndex;
       --this.swiperActiveIndex;
-      if (isClick) {
-        // this.autoSwiper();
+      if (isClick && this.swiperOptoins.autoPlay) {
+        this.autoSwiper();
       }
     },
     autoSwiper() {
       this.interval = setInterval(() => {
         if (this.swiperActiveIndex === 0) {
           this.swiperRight();
-        } else if (this.swiperActiveIndex === 2) {
+        } else if (this.swiperActiveIndex === this.swiperList.length - 1) {
           this.swiperLeft();
-        } else if (this.swiperActiveIndex === 1) {
+        } else {
           if (this.last_swiperActiveIndex < this.swiperActiveIndex) {
             this.swiperRight();
           } else {
@@ -140,11 +139,9 @@ export default {
 .swiper {
   position: relative;
   margin: auto;
-  height: 373px;
-  width: 1200px;
   .swiper-left {
     position: absolute;
-    left: 0;
+    left: -65px;
     top: 0;
     bottom: 0;
     margin: auto;
@@ -154,7 +151,7 @@ export default {
   }
   .swiper-right {
     position: absolute;
-    right: 0;
+    right: -65px;
     top: 0;
     bottom: 0;
     margin: auto;
@@ -168,7 +165,7 @@ export default {
     }
   }
   .swiper-content {
-    width: 960px;
+    width: 100%;
     height: 100%;
     margin: auto;
     color: #243a56;
@@ -202,6 +199,7 @@ export default {
         right: 0;
         bottom: 20px;
         margin: auto;
+        color: #101010;
       }
     }
   }

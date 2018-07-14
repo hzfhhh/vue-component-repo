@@ -2,6 +2,16 @@
 
 > 日常工作中造的一些vue的组件轮子
 
+## 在线预览地址
+[请戳这里](https://x7n99vm06p.codesandbox.io/#/)
+
+## 目录
+[1.加载动画](https://x7n99vm06p.codesandbox.io/#/test-mLoading)
+[2.分页](https://x7n99vm06p.codesandbox.io/#/test-pagination)
+[3.滑块](https://x7n99vm06p.codesandbox.io/#/test-slider)
+[4.滑动列表](https://x7n99vm06p.codesandbox.io/#/test-swiper-out)
+[5.轮播图](https://x7n99vm06p.codesandbox.io/#/test-swiper)
+
 ## Build Setup
 
 ``` bash

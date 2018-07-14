@@ -1,5 +1,8 @@
 <template>
   <div class="test-swiper">
+    <router-link to="/">
+      <div class="back">返回</div>
+    </router-link>
     <swiper :swiperOptoins="swiperOptoins"></swiper>
   </div>
 </template>

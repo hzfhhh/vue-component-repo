@@ -1,4 +1,4 @@
-# VUE 个人组件库
+# VUE 个人组件库(vue-component-repo)
 
 > 日常工作中造的一些vue的组件轮子
 

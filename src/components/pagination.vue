@@ -8,7 +8,7 @@
         <li class="number" @click="setPage(1)">1</li>
         <li class="dot">...</li>
       </a>
-      <a href="javascript:;" v-for="i in (pageArrayIndex < totalPage + 1? pageLenth : (totalPage - addNum))" :key="i" @click="setPage(i+addNum)">
+      <a href="javascript:;" v-for="i in (pageArrayIndex < Math.ceil(totalPage/size)? pageLenth : (totalPage - addNum))" :key="i" @click="setPage(i+addNum)">
         <li class="number" :class="{active: (i+addNum)==pageIndex}">{{i+addNum}}</li>
       </a>
       <a href="javascript:;" v-if="(totalPage - addNum) > pageLenth && pageArrayIndex < totalPage">
@@ -62,7 +62,7 @@ export default {
   methods: {
     setPage(i) {
       // 大于总页码数
-      if (i > this.total) {
+      if (i > this.totalPage) {
         return false;
       }
       // 一次展示的列数小于总列数

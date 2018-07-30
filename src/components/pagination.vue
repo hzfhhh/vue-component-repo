@@ -85,9 +85,6 @@ export default {
         ) {
           var n = this.pageIndex / this.size;
           this.addNum = (n - 1) * this.size;
-        } else {
-          var n = Math.floor(this.pageIndex / this.size) 
-          this.addNum = n * this.size
         }
         this.$emit("changeSize", i);
       }

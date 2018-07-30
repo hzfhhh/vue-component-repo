@@ -19,7 +19,7 @@
     <a href="javascript:;" class="btn-next" :class="{disabled: totalPage===1||pageIndex==totalPage}" :style="{cursor: totalPage===1||pageIndex==totalPage?'not-allowed':'pointer'}" @click="setPage(pageIndex+1)">
     </a>
     <div class="toPath">
-      前往<div class="inputNum"><input type="text" v-model="pageIndex" @blur="setPage(curren)" @keyup.enter="setPage(pageIndex)"></div>页
+      前往<div class="inputNum"><input type="text" v-model="inputPageIndex" @blur="setPage(inputPageIndex)" @keyup.enter="setPage(inputPageIndex)"></div>页
     </div>
   </div>
 </template>
@@ -39,6 +39,7 @@ export default {
   data() {
     return {
       pageIndex: 1, //当前页码
+      inputPageIndex: 1,//当前页码
       pageArrayIndex: 1, //当前页码分组
       addNum: 0,
       showSize: 5

@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       size: 10,
-      total: 100
+      total: 200
     };
   },
   methods: {

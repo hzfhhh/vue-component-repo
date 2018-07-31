@@ -16,11 +16,11 @@
 export default {
 	name: "swiper",
 	props: {
-		swiperOptoins: Object
+		swiperOptions: Object
 	},
 	computed: {
 		swiperList() {
-			return this.swiperOptoins.swiperList;
+			return this.swiperOptions.swiperList;
 		}
 	},
 	data() {
@@ -29,7 +29,8 @@ export default {
 			last_swiperActiveIndex: 0,
 			swiperWidth: 600,
 			swiperHeight: 300,
-			textColor: "#101010"
+			textColor: "#101010",
+			interval: ''
 		};
 	},
 	mounted() {
@@ -41,17 +42,22 @@ export default {
 				this.$refs[itemIndex][0].style.transform = `translateX(${this.swiperWidth*i}px) scale(1)`;
 			}
 		}
-		this.swiperWidth = this.swiperOptoins.swiperWidth
-			? this.swiperOptoins.swiperWidth
+		this.swiperWidth = this.swiperOptions.swiperWidth
+			? this.swiperOptions.swiperWidth
 			: this.swiperWidth;
-		this.swiperHeight = this.swiperOptoins.swiperHeight
-			? this.swiperOptoins.swiperHeight
+		this.swiperHeight = this.swiperOptions.swiperHeight
+			? this.swiperOptions.swiperHeight
 			: this.swiperHeight;
-		this.textColor = this.swiperOptoins.textColor
-			? this.swiperOptoins.textColor
+		this.textColor = this.swiperOptions.textColor
+			? this.swiperOptions.textColor
 			: this.textColor;
-		if (this.swiperOptoins.autoPlay) {
+		if (this.swiperOptions.autoPlay) {
 			this.autoSwiper();
+		}
+	},
+	beforeDestroy() {
+		if (this.swiperOptions.autoPlay) {
+			clearInterval(this.interval);
 		}
 	},
 	methods: {
@@ -114,7 +120,7 @@ export default {
 			} else {
 			++this.swiperActiveIndex;
 			}
-			if (isClick && this.swiperOptoins.autoPlay) {
+			if (isClick && this.swiperOptions.autoPlay) {
 				this.autoSwiper();
 			}
 		},
@@ -155,7 +161,7 @@ export default {
 			} else {
 			--this.swiperActiveIndex;
 			}
-			if (isClick && this.swiperOptoins.autoPlay) {
+			if (isClick && this.swiperOptions.autoPlay) {
 				this.autoSwiper();
 			}
 		},

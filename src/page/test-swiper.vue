@@ -1,9 +1,9 @@
 <template>
-  <div class="test-swiper">
+  <div class="test">
     <router-link to="/">
       <div class="back">返回</div>
     </router-link>
-    <swiper :swiperOptoins="swiperOptoins"></swiper>
+    <swiper :swiperOptions="swiperOptions"></swiper>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
 	},
 	data() {
 		return {
-			swiperOptoins: {
+			swiperOptions: {
 				autoPlay: true,
 				textColor: "",
 				swiperWidth: 600,
@@ -42,3 +42,10 @@ export default {
 	}
 };
 </script>
+
+<style scoped>
+	.back {
+		margin-bottom: 30px;
+	}
+</style>
+

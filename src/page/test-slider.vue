@@ -1,5 +1,5 @@
 <template>
-  <div id="test-slider">
+  <div id="test-slider" class="test">
     <router-link to="/">
       <div class="back">返回</div>
     </router-link>

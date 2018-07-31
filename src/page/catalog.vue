@@ -1,6 +1,5 @@
 <template>
   <div class="catalog">
-    <h3 class="title">组件目录</h3>
     <router-link to="/test-mLoading">
       <div class="catalog-tag">1.加载动画</div>
     </router-link>
@@ -21,7 +20,9 @@
 
 <style lang="less" scoped>
 .catalog {
-  padding: 0 50px;
+  height: 100%;
+  width: 100%;
+  padding: 0;
   text-align: left;
   .title {
   }
@@ -29,10 +30,20 @@
     text-decoration: none;
   }
   .catalog-tag {
+    margin-left: 50px;
+    margin-top: 20px;
     color: #5c6065;
     &:hover {
       color: #4e94ce;
     }
+  }
+  .side-bar {
+    float: left;
+    width: 200px;
+    height: 100%;
+    background-color: #eee;
+    padding: 20px 0;
+    box-sizing: border-box;
   }
 }
 </style>
